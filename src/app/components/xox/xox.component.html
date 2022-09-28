@@ -1,0 +1,49 @@
+<div class="container" style="margin-top: 15%;">
+    <div class="col-md-6 offset-3" style="border: 1px solid;">
+        <h1 class="mt-2 mx-2">Autocomplete</h1>
+        <hr>
+        <form class="example-form mx-2">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Number</mat-label>
+              <input type="text"
+                     placeholder="Pick one"
+                     aria-label="Number"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+          <hr>
+
+          <h1 class="mt-2 mx-2">Chips</h1>
+        <hr>
+        <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Favorite Fruits</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip
+                    *ngFor="let fruit of fruits"
+                    (removed)="remove(fruit)">
+                    {{fruit}}
+                    <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip>
+                <input
+                    placeholder="New fruit..."
+                    #fruitInput
+                    [formControl]="fruitCtrl"
+                    [matAutocomplete]="auto"
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+           
+          </mat-form-field>
+        <hr>
+    </div>
+</div>
