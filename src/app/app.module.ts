@@ -13,11 +13,13 @@ import { AppComponent } from './app.component';
 import { XoxComponent } from './components/xox/xox.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    XoxComponent
+    XoxComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
